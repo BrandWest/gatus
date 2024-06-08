@@ -21,7 +21,6 @@ data:
       type: postgres
       path: "postgres://"
 
-
     endpoint-defaults: &external
       group: External
       interval: 15s
@@ -35,11 +34,12 @@ data:
 
     internal-defaults: &internal
       group: Internal
+      interval: 15s      
       client: 
         timeout: 10s
-        conditions:
-          - "[STATUS]  < 300"
-          - "[CERTIFICATE_EXPIRATION] > 48h"
+      conditions:
+        - "[STATUS]  < 300"
+        - "[CERTIFICATE_EXPIRATION] > 48h"
       alerts:
         - type: discord
 
