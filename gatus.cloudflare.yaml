@@ -4,6 +4,7 @@ metadata:
   annotations:
     avp.kubernetes.io/path: "argocd/data/argocd-vault-plugin/cloudflare"
   name: cloudflare-api-token-secret
+  namespace: gatus
 type: Opaque
 stringData:
   api-token: <api-token>
