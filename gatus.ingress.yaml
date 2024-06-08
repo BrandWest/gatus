@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  labels:
+    app.kubernetes.io/name: gatus
+    app.kubernetes.io/instance: gatus  
+  annotations:
+    cert-manager.io/issuer: gatus-letsencrypt-prod
+  name: gatus
+  namespace: gatus
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - gatus.diagon.cloud
+    secretName: gatus-tls
+  rules:
+  - host: gatus.diagon.cloud
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: gatus
+            port:
+              number: 443
+

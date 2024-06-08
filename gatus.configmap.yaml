@@ -1,0 +1,87 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatus-configmap
+  namespace: gatus
+data:
+  config.yaml: |
+    alerting:
+      discord:
+        webhook-url: <path:argocd/data/argocd-vault-plugin/gatus#gatus-webhook>
+        default-alert:
+          title: ":helmet_with_white_cross: Gatus External"
+          description: "Health Check Failed"
+          send-on-resolved: true
+          failure-threshold: 2
+          success-threshold: 2
+    
+    metrics: true
+
+    storage:
+      type: postgres
+      path: "postgres://"
+
+
+    endpoint-defaults: &external
+      group: External
+      interval: 15s
+      client:
+        timeout: 10s
+      conditions:
+        - "[STATUS]  < 300"
+        - "[CERTIFICATE_EXPIRATION] > 48h"
+      alerts:
+        - type: discord
+
+    internal-defaults: &internal
+      group: Internal
+      client: 
+        timeout: 10s
+        conditions:
+          - "[STATUS]  < 300"
+          - "[CERTIFICATE_EXPIRATION] > 48h"
+      alerts:
+        - type: discord
+
+    endpoints:
+      - name: Vault - HTTPS
+        <<: *external
+        url: <path:argocd/data/argocd-vault-plugin/gatus#1-external>
+
+      - name: Grafana - HTTPS
+        <<: *external
+        url: <path:argocd/data/argocd-vault-plugin/gatus#2-external>
+      
+      - name: VScode - HTTPS
+        <<: *external
+        url: <path:argocd/data/argocd-vault-plugin/gatus#3-external>
+      
+      - name: PiHole - HTTPS
+        <<: *external
+        url: <path:argocd/data/argocd-vault-plugin/gatus#4-external>
+      
+      - name: BitWarden - HTTPS
+        <<: *external
+        url: <path:argocd/data/argocd-vault-plugin/gatus#5-external>
+      
+      - name: Gatus - HTTPS
+        <<: *external
+        url: <path:argocd/data/argocd-vault-plugin/gatus#6-external>
+
+      - name: Firewall - HTTPS
+        <<: *internal
+        url: <path:argocd/data/argocd-vault-plugin/gatus#1-internal>
+      
+      - name: Switch - HTTPS
+        <<: *internal
+        url: <path:argocd/data/argocd-vault-plugin/gatus#2-internal>
+
+      - name: CICD - HTTPS
+        <<: *external
+        url: <path:argocd/data/argocd-vault-plugin/gatus#7-external>
+      
+      - name: SSO - HTTPS
+        <<: *external
+        url: <path:argocd/data/argocd-vault-plugin/gatus#8-external>
+    
+

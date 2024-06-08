@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gatus
+  namespace: gatus
+spec:
+  selector:
+    matchLabels:
+      app: gatus
+  template:
+    metadata:
+      labels:
+        app: gatus
+    spec:
+      containers:
+      - name: gatus
+        image: twinproduction/gatus:v5.7.0
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 8080
+            name: gatus
+        volumeMounts:
+        - name: gatus-config
+          mountPath: /config/config.yaml
+          subPath: config.yaml
+          readOnly: true
+      volumes:
+      - name: gatus-config
+        configMap:
+          name: gatus-configmap
