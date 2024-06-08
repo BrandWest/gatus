@@ -46,42 +46,42 @@ data:
     endpoints:
       - name: Vault - HTTPS
         <<: *external
-        url: <path:argocd/data/argocd-vault-plugin/gatus#1-external>
+        url: "<path:argocd/data/argocd-vault-plugin/gatus#1-external>"
 
       - name: Grafana - HTTPS
         <<: *external
-        url: <path:argocd/data/argocd-vault-plugin/gatus#2-external>
+        url: "<path:argocd/data/argocd-vault-plugin/gatus#2-external>"
       
       - name: VScode - HTTPS
         <<: *external
-        url: <path:argocd/data/argocd-vault-plugin/gatus#3-external>
+        url: "<path:argocd/data/argocd-vault-plugin/gatus#3-external>"
       
       - name: PiHole - HTTPS
         <<: *external
-        url: <path:argocd/data/argocd-vault-plugin/gatus#4-external>
+        url: "<path:argocd/data/argocd-vault-plugin/gatus#4-external>"
       
       - name: BitWarden - HTTPS
         <<: *external
-        url: <path:argocd/data/argocd-vault-plugin/gatus#5-external>
+        url: "<path:argocd/data/argocd-vault-plugin/gatus#5-external>"
       
       - name: Gatus - HTTPS
         <<: *external
-        url: <path:argocd/data/argocd-vault-plugin/gatus#6-external>
+        url: "<path:argocd/data/argocd-vault-plugin/gatus#6-external>"
 
       - name: Firewall - HTTPS
         <<: *internal
-        url: <path:argocd/data/argocd-vault-plugin/gatus#1-internal>
+        url: "<path:argocd/data/argocd-vault-plugin/gatus#1-internal>"
       
       - name: Switch - HTTPS
         <<: *internal
-        url: <path:argocd/data/argocd-vault-plugin/gatus#2-internal>
+        url: "<path:argocd/data/argocd-vault-plugin/gatus#2-internal>"
 
       - name: CICD - HTTPS
         <<: *external
-        url: <path:argocd/data/argocd-vault-plugin/gatus#7-external>
+        url: "<path:argocd/data/argocd-vault-plugin/gatus#7-external>"
       
       - name: SSO - HTTPS
         <<: *external
-        url: <path:argocd/data/argocd-vault-plugin/gatus#8-external>
+        url: "<path:argocd/data/argocd-vault-plugin/gatus#8-external>"
     
 
