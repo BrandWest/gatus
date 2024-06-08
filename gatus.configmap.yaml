@@ -67,14 +67,14 @@ data:
       - name: Gatus - HTTPS
         <<: *external
         url: "<path:argocd/data/argocd-vault-plugin/gatus#6-external>"
-
-      - name: Firewall - HTTPS
-        <<: *internal
-        url: "<path:argocd/data/argocd-vault-plugin/gatus#1-internal>"
       
       - name: Switch - HTTPS
         <<: *internal
         url: "<path:argocd/data/argocd-vault-plugin/gatus#2-internal>"
+
+      - name: Firewall - HTTPS
+        <<: *internal
+        url: "<path:argocd/data/argocd-vault-plugin/gatus#1-internal>"
 
       - name: CICD - HTTPS
         <<: *external
