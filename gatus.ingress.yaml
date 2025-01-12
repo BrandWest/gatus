@@ -9,7 +9,7 @@ metadata:
   name: gatus
   namespace: gatus
 spec:
-  ingressClassName: nginx
+  ingressClassName: nginx 
   tls:
   - hosts:
     - gatus.diagon.cloud
