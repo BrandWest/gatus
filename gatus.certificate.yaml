@@ -7,7 +7,7 @@ spec:
   secretName: gatus-tls
   issuerRef:
     name: gatus-letsencrypt-prod
-  duration: 2160h
-  renewBefore: 360h    
+  duration: 2160h0m0s
+  renewBefore: 360h0m0s  
   dnsNames:
   - gatus.diagon.cloud
